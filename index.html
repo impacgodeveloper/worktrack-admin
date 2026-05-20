@@ -15,6 +15,15 @@
     the `--base-href` argument provided to `flutter build`.
   -->
   <script>
+    // Dynamically unregister any old/stale active service workers to prevent offline cache crashes
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        for (var registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+
     (function () {
       var base = document.createElement('base');
       if (window.location.pathname.indexOf('/worktrack-admin/') !== -1) {

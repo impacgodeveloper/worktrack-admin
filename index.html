@@ -14,17 +14,17 @@
     This is a placeholder for base href that will be replaced by the value of
     the `--base-href` argument provided to `flutter build`.
   -->
+  <base href="/">
   <script>
-
-
     (function () {
-      var base = document.createElement('base');
-      if (window.location.pathname.indexOf('/worktrack-admin/') !== -1) {
-        base.href = '/worktrack-admin/';
-      } else {
-        base.href = '/';
+      if (document.querySelector('base') && document.querySelector('base').getAttribute('href') === '/') {
+        var base = document.querySelector('base');
+        if (window.location.pathname.indexOf('/worktrack-admin/') !== -1) {
+          base.href = '/worktrack-admin/';
+        } else {
+          base.href = '/';
+        }
       }
-      document.head.insertBefore(base, document.head.firstElementChild);
     })();
   </script>
 
